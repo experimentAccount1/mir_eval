@@ -5,8 +5,7 @@ notifications:
 
 python:
     - "2.7"
-    - "3.4"
-    - "3.5"
+
 
 before_install:
     - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
@@ -26,14 +25,25 @@ before_install:
     - source activate test-environment
     - pip install python-coveralls
     - pip install numpydoc
+# add for profile
+    - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+    - sudo apt-get update -qq
 
 install:
     - pip install -e .
+    # add for profile
+    - sudo apt-get install -qq g++-4.8
+    - export CXX="g++-4.8"
+    - pip install nose-cprof
+    - pip install properform
+
 
 script:
-    - nosetests --with-coverage --cover-package=mir_eval
+    - nosetests --with-coverage --cover-package=mir_eval --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_cebede75c8_0
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_cebede75c8_0 ./tests/profile_mir_eval_cebede75c8_0
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
 
 after_success:
     - coveralls
+ #2017-08-27 23:04:31 modified at 0
