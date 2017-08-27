@@ -40,11 +40,11 @@ before_script:
     - pep8 mir_eval evaluators tests
 
 script:
-    - nosetests -v --with-coverage --cover-package=mir_eval -w tests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_6ce2e85c7b_0
-    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_6ce2e85c7b_0 ./tests/profile_mir_eval_6ce2e85c7b_0
+    - nosetests -v --with-coverage --cover-package=mir_eval -w tests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_6ce2e85c7b_1
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_6ce2e85c7b_1 ./tests/profile_mir_eval_6ce2e85c7b_1
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
 
 after_success:
     - coveralls
- #2017-08-27 22:21:03 modified at 0
+ #2017-08-27 22:21:03 modified at 0 #2017-08-27 22:21:09 modified at 1
