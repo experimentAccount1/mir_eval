@@ -39,11 +39,11 @@ install:
 
 
 script:
-    - nosetests --with-coverage --cover-package=mir_eval --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_7f4a0851bf_0
-    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_7f4a0851bf_0 ./tests/profile_mir_eval_7f4a0851bf_0
+    - nosetests --with-coverage --cover-package=mir_eval --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_7f4a0851bf_1
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_7f4a0851bf_1 ./tests/profile_mir_eval_7f4a0851bf_1
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
 
 after_success:
     - coveralls
- #2017-08-27 23:06:51 modified at 0
+ #2017-08-27 23:06:51 modified at 0 #2017-08-27 23:07:01 modified at 1
