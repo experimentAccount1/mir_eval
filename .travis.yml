@@ -1,8 +1,15 @@
 language: python
 python:
     - "2.7"
-    - "3.3"
+
 #    - "3.4" # not supported due to no scipy wheel available yet
+
+before_install:
+# add for profile
+    - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+    - sudo apt-get update -qq
+
+
 install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libatlas-base-dev libatlas3gf-base gfortran
@@ -12,7 +19,15 @@ install:
     - pip install --no-index --find-links http://www.mpia.de/~robitaille/wheelhouse/ --trusted-host www.mpia.de scipy
     - pip install -e .
     - pip install nose sphinx numpydoc
+    # add for profile
+    - sudo apt-get install -qq g++-4.8
+    - export CXX="g++-4.8"
+    - pip install nose-cprof
+    - pip install properform
+
 script:
-    - nosetests
+    - nosetests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_15986a51c4_0
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_15986a51c4_0 ./tests/profile_mir_eval_15986a51c4_0
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
+ #2017-08-27 23:08:16 modified at 0
