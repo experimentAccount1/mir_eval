@@ -26,8 +26,8 @@ install:
     - pip install properform
 
 script:
-    - nosetests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_15986a51c4_0
-    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_15986a51c4_0 ./tests/profile_mir_eval_15986a51c4_0
+    - nosetests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_15986a51c4_1
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_15986a51c4_1 ./tests/profile_mir_eval_15986a51c4_1
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
- #2017-08-27 23:08:16 modified at 0
+ #2017-08-27 23:08:16 modified at 0 #2017-08-27 23:08:27 modified at 1
