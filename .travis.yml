@@ -36,12 +36,12 @@ install:
     - pip install properform
 
 script:
-    - nosetests -v --with-coverage --cover-package=mir_eval -w tests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_a1dfe4c937_1
-    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_a1dfe4c937_1 ./tests/profile_mir_eval_a1dfe4c937_1
+    - nosetests -v --with-coverage --cover-package=mir_eval -w tests --with-cprofile --cprofile-stats-erase --cprofile-stats-file=profile_mir_eval_a1dfe4c937_2
+    - python -m properform Push 47.88.50.110:15554 asdf_mir_eval_a1dfe4c937_2 ./tests/profile_mir_eval_a1dfe4c937_2
     - pep8 mir_eval evaluators tests
     - python setup.py build_sphinx
     - python setup.py egg_info -b.dev sdist --formats gztar
 
 after_success:
     - coveralls
- #2017-08-27 22:20:22 modified at 0 #2017-08-27 22:20:29 modified at 1
+ #2017-08-27 22:20:22 modified at 0 #2017-08-27 22:20:29 modified at 1 #2017-08-27 22:20:38 modified at 2
